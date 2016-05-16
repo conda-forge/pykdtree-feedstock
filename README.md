@@ -5,7 +5,7 @@ Home: https://pypi.python.org/pypi/pykdtree
 
 Package license: LGPL-3.0
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Fast kd-tree implementation with OpenMP-enabled queries
 
@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pykdtree-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/pykdtree-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/pykdtree-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pykdtree-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pykdtree-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pykdtree-feedstock/branch/master)
