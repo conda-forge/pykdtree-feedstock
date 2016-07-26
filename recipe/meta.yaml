@@ -23,9 +23,11 @@ requirements:
         - setuptools
         - numpy x.x
         - msinttypes  # [win and py<35]
+        - gcc  # [linux]
     run:
         - python
         - numpy x.x
+        - libgcc  # [linux]
 
 test:
     imports:
