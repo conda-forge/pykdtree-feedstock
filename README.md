@@ -7,7 +7,7 @@ Package license: LGPL-3.0
 
 Feedstock license: BSD 3-Clause
 
-Summary: Fast kd-tree implementation with OpenMP-enabled queries
+Summary: Fast kd-tree implementation with OpenMP-enabled queries.
 
 
 

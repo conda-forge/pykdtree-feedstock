@@ -27,16 +27,19 @@ requirements:
     run:
         - python
         - numpy x.x
+        # Needs libgomp.
         - libgcc  # [linux]
 
 test:
     imports:
         - pykdtree
+    commands:
+        - conda inspect linkages -n _test pykdtree  # [not win]
 
 about:
     home: https://pypi.python.org/pypi/pykdtree
     license: LGPL-3.0
-    summary: Fast kd-tree implementation with OpenMP-enabled queries
+    summary: 'Fast kd-tree implementation with OpenMP-enabled queries.'
 
 extra:
     recipe-maintainers:
