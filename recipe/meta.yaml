@@ -1,4 +1,4 @@
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
     name: pykdtree
@@ -7,7 +7,7 @@ package:
 source:
     fn: pykdtree-{{ version }}.tar.gz
     url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
-    md5: 78ea41ed9684aff847692011466ab640
+    md5: 395603b8821954f1bffaf1913baf42a2
 
 build:
     number: 0
