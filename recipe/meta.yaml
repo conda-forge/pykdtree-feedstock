@@ -1,46 +1,48 @@
 {% set version = "1.2.1" %}
 
 package:
-    name: pykdtree
-    version: {{ version }}
+  name: pykdtree
+  version: {{ version }}
 
 source:
-    fn: pykdtree-{{ version }}.tar.gz
-    url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
-    md5: 395603b8821954f1bffaf1913baf42a2
+  fn: pykdtree-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
+  sha256: 5d9dd0b4ad4818996ff2439d0366e514126655c034d73e122f1bb39c3c494b68
 
 build:
-    number: 0
-    script:
-        - export USE_OMP=1  # [linux]
-        - export USE_OMP=0  # [osx]
-        - set USE_OMP=0  # [win]
-        - python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  skip: True  # [np==110 or py34]
+  script:
+    - export USE_OMP=1  # [linux]
+    - export USE_OMP=0  # [osx]
+    - set USE_OMP=0  # [win]
+    - python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-        - numpy x.x
-        - msinttypes  # [win and py<35]
-        - gcc  # [linux]
-    run:
-        - python
-        - numpy x.x
-        # Needs libgomp.
-        - libgcc  # [linux]
+  build:
+    - python
+    - setuptools
+    - numpy x.x
+    - msinttypes  # [win and py<35]
+    - gcc  # [linux]
+  run:
+    - python
+    - numpy x.x
+    # Needs libgomp.
+    - libgcc  # [linux]
 
 test:
-    imports:
-        - pykdtree
-    commands:
-        - conda inspect linkages -n _test pykdtree  # [not win]
+  imports:
+    - pykdtree
+  commands:
+    - conda inspect linkages -p $PREFIX pykdtree  # [not win]
+    - conda inspect objects -p $PREFIX pykdtree  # [osx]
 
 about:
-    home: https://pypi.python.org/pypi/pykdtree
-    license: LGPL-3.0
-    summary: 'Fast kd-tree implementation with OpenMP-enabled queries.'
+  home: https://pypi.python.org/pypi/pykdtree
+  license: LGPL-3.0
+  summary: 'Fast kd-tree implementation with OpenMP-enabled queries.'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
+  recipe-maintainers:
+    - ocefpaf
