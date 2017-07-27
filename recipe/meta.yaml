@@ -5,12 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  fn: pykdtree-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
   sha256: 958cb731b19f10e14471947e67602876c3ab9e01246e6b9c6c5cbfd34d17141f
 
 build:
-  number: 0
+  number: 1
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
@@ -21,13 +20,16 @@ requirements:
   build:
     - python
     - setuptools
-    - numpy x.x
-    - msinttypes  # [win and py<35]
     - gcc  # [linux]
+    - numpy 1.7.*  # [py27]
+    - numpy 1.9.*  # [py35]
+    - numpy 1.11.*  # [py36]
+    - msinttypes  # [win and py<35]
   run:
     - python
-    - numpy x.x
-    # Needs libgomp.
+    - numpy >=1.7  # [py27]
+    - numpy >=1.9  # [py35]
+    - numpy >=1.11  # [py36]
     - libgcc  # [linux]
 
 test:
