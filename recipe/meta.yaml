@@ -9,39 +9,36 @@ source:
   sha256: 79351b79087f473f83fb27a5cd552bd1056f2dfa7acec5d4a68f35a7cbea6776
 
 build:
-  number: 0
+  number: 1
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
     - set USE_OMP=0  # [win]
-    - python setup.py install --single-version-externally-managed --record record.txt
+    - python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
     - gcc  # [linux]
-    - numpy 1.7.*  # [py27]
-    - numpy 1.9.*  # [py35]
-    - numpy 1.11.*  # [py36]
+    - numpy 1.11.*
     - msinttypes  # [win and py<35]
   run:
     - python
-    - numpy >=1.7  # [py27]
-    - numpy >=1.9  # [py35]
-    - numpy >=1.11  # [py36]
+    - numpy >=1.11
     - libgcc  # [linux]
 
 test:
   imports:
     - pykdtree
   commands:
-    - conda inspect linkages -p $PREFIX pykdtree  # [not win]
-    - conda inspect objects -p $PREFIX pykdtree  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://pypi.python.org/pypi/pykdtree
   license: LGPL-3.0
+  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
   summary: 'Fast kd-tree implementation with OpenMP-enabled queries.'
 
 extra:
