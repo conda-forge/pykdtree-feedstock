@@ -31,7 +31,6 @@ requirements:
 test:
   imports:
     - pykdtree
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://pypi.python.org/pypi/pykdtree
