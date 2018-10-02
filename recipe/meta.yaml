@@ -9,12 +9,12 @@ source:
   sha256: 0d49d3bbfa0366dbe29176754ec86df75114a25525b530dcbbb75d3ac4c263e9
 
 build:
-  number: 1
+  number: 2
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
     - set USE_OMP=0  # [win]
-    - python -m pip install --no-deps --ignore-installed .
+    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   build:
@@ -31,15 +31,12 @@ requirements:
 test:
   imports:
     - pykdtree
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://pypi.python.org/pypi/pykdtree
   license: LGPL-3.0
   license_file: LICENSE.txt
-  summary: 'Fast kd-tree implementation with OpenMP-enabled queries.'
+  summary: 'Fast kd-tree implementation with OpenMP-enabled queries'
 
 extra:
   recipe-maintainers:
