@@ -5,16 +5,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
-  sha256: 0d49d3bbfa0366dbe29176754ec86df75114a25525b530dcbbb75d3ac4c263e9
+  url: https://github.com/storpipfugl/pykdtree/archive/v{{ version }}.tar.gz
+  sha256: 3e5e57edcd730a2a05aeac9555c1645151d4daebd41a8a1600670f4ad00b6beb
 
 build:
-  number: 1003
+  number: 1004
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
     - set USE_OMP=0  # [win]
-    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+    - cython pykdtree/kdtree.pyx
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -23,6 +24,7 @@ requirements:
     - python
     - pip
     - numpy
+    - cython
     - msinttypes  # [win and py<35]
   run:
     - python
@@ -34,7 +36,7 @@ test:
 
 about:
   home: https://pypi.python.org/pypi/pykdtree
-  license: LGPL-3.0
+  license: LGPL-3.0-only
   license_file: LICENSE.txt
   summary: 'Fast kd-tree implementation with OpenMP-enabled queries'
 
