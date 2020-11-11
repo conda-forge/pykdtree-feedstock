@@ -1,4 +1,4 @@
-{% set version = "1.3.3" %}
+{% set version = "1.3.4" %}
 
 package:
   name: pykdtree
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/storpipfugl/pykdtree/archive/v{{ version }}.tar.gz
-  sha256: 5bf1d232b33f8778f5828eedfcc3d562883b8069fcd766d3531dfc5fd4e26f32
+  sha256: d4061e5b77f8c6c87a803346fe620e0eee13e15dd5fef88c48cc217c58ff6510
 
 build:
   number: 0
