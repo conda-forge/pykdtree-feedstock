@@ -1,0 +1,4 @@
+c_compiler_version:    # [osx and (build_platform != target_platform)]
+- '12'                 # [osx and (build_platform != target_platform)]
+cxx_compiler_version:  # [osx and (build_platform != target_platform)]
+- '12'                 # [osx and (build_platform != target_platform)]
