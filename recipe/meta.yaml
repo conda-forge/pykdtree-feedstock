@@ -9,23 +9,29 @@ source:
   sha256: d4061e5b77f8c6c87a803346fe620e0eee13e15dd5fef88c48cc217c58ff6510
 
 build:
-  number: 1
+  number: 2
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
     - set USE_OMP=0  # [win]
-    - cython pykdtree/kdtree.pyx
+    - cython pykdtree/kdtree.pyx  # [not (osx and (build_platform != target_platform))]
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+
   host:
     - python
     - pip
     - numpy
     - cython
     - msinttypes  # [win and py<35]
+    
   run:
     - python
     - {{ pin_compatible('numpy') }}
@@ -43,3 +49,4 @@ about:
 extra:
   recipe-maintainers:
     - ocefpaf
+    - ngam
