@@ -302,6 +302,8 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@djhoese](https://github.com/djhoese/)
+* [@mraspaud](https://github.com/mraspaud/)
 * [@ngam](https://github.com/ngam/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 
