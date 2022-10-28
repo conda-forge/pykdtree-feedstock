@@ -9,7 +9,7 @@ source:
   sha256: a2d385e301b38cc1e4ae23405c0d8ab11085e6330ef44cfd7528408dab3e98c5
 
 build:
-  number: 0
+  number: 1
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
