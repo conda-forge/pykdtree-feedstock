@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/storpipfugl/pykdtree/archive/v{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
   sha256: 780b693d0555b857d7aab31e35d4293bf4ebdb9dec7a45ba4bb23b4400f626dc
 
 build:
