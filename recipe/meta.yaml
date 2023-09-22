@@ -10,11 +10,11 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<39]
   script:
     - export USE_OMP=1  # [linux]
     - export USE_OMP=0  # [osx]
     - set USE_OMP=0  # [win]
-    - cython pykdtree/kdtree.pyx  # [not (osx and (build_platform != target_platform))]
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -30,7 +30,6 @@ requirements:
     - pip
     - numpy
     - cython
-    - msinttypes  # [win and py<35]
   run:
     - python
     - {{ pin_compatible('numpy') }}
