@@ -1,4 +1,4 @@
-{% set version = "1.3.10" %}
+{% set version = "1.3.11" %}
 
 package:
   name: pykdtree
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
-  sha256: 41e7c5d669cadc2188acc4bbb4b0b4dcaf492d84512f1e6517a7ab2d122c911d
+  sha256: 6c123c7bae5213af223c529a8b4161c07eb854a6fe4038b36952bada2131ebcb
 
 build:
   number: 0
