@@ -12,9 +12,8 @@ build:
   number: 2
   skip: true  # [py<39]
   script:
-    - export USE_OMP=1  # [linux]
-    - export USE_OMP=1  # [osx]
-    - set USE_OMP=0  # [win]
+    - export USE_OMP=1  # [linux or osx]
+    - set USE_OMP=1  # [win]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -25,14 +24,16 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - llvm-openmp  # [osx]
+    - llvm-openmp  # [osx or win]
+    - libgomp  # [linux]
   host:
     - python
     - setuptools
     - pip
     - numpy
     - cython
-    - llvm-openmp  # [osx]
+    - llvm-openmp  # [osx or win]
+    - libgomp  # [linux]
   run:
     - python
 
