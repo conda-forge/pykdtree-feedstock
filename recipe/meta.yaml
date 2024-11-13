@@ -5,17 +5,16 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/p/pykdtree/pykdtree-{{ version }}.tar.gz
   sha256: 3accf852e946653e399c3d4dbbe119dbc6d3f72cfd2d5a95cabf0bf0c7f924fe
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<39]
   script:
-    - export USE_OMP=1  # [linux]
-    - export USE_OMP=0  # [osx]
-    - set USE_OMP=0  # [win]
-    - {{ PYTHON }} -m pip install . -vv
+    - export USE_OMP=1  # [linux or osx]
+    - set USE_OMP=1  # [win]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -25,12 +24,16 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
+    - llvm-openmp  # [osx or win]
+    - libgomp  # [linux]
   host:
     - python
     - setuptools
     - pip
     - numpy
     - cython
+    - llvm-openmp  # [osx or win]
+    - libgomp  # [linux]
   run:
     - python
 
