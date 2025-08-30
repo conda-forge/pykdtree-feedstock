@@ -9,7 +9,7 @@ source:
   sha256: d9187930ffb8c822c52595b64948b47346694ee2a49e2702420b58f743d786f5
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<39]
   script:
     - export USE_OMP=1  # [linux or osx]
